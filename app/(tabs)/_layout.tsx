@@ -1,26 +1,33 @@
+// import CustomTabBar from "@/components/CustomTabBar";
+import { useTheme } from "@/hooks/useTheme";
+import { darkColors, lightColors } from "@/lib/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
 export default function TabsLayout() {
+  const { theme } = useTheme();
+  const colors = theme === "light" ? lightColors : darkColors;
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "red",
-        tabBarInactiveTintColor: "green",
+        tabBarActiveTintColor: colors.primary,
+        tabBarInactiveTintColor: colors.textMuted,
         tabBarStyle: {
-          backgroundColor: "#f0f0f0",
-          borderTopColor: "#ccc",
+          backgroundColor: colors.surface,
+          borderTopColor: colors.border,
           borderTopWidth: 1,
           height: 80,
-          paddingBottom: 10,
+          paddingBottom: 20,
           paddingTop: 10,
         },
         tabBarLabelStyle: {
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: "600",
         },
         headerShown: false,
       }}
+      // tabBar={(props) => <CustomTabBar {...props} />}
     >
       <Tabs.Screen
         name="index"
@@ -36,7 +43,7 @@ export default function TabsLayout() {
         options={{
           title: "Settings",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings" size={size} color={color} />
+            <Ionicons name="settings-outline" size={size} color={color} />
           ),
         }}
       />
