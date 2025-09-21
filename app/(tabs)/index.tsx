@@ -1,4 +1,6 @@
 import Header from "@/components/todos/Header";
+import TodoInput from "@/components/todos/TodoInput";
+import TodoList from "@/components/todos/TodoList";
 import { useTheme } from "@/hooks/useTheme";
 import { darkColors, lightColors } from "@/lib/colors";
 import { useQuery } from "@tanstack/react-query";
@@ -22,7 +24,14 @@ export default function HomeScreen() {
   return (
     <LinearGradient colors={colors.gradients.background} className="flex-1">
       <SafeAreaView className="flex-1">
+        {/* Headers */}
         <Header todos={todos} />
+
+        {/* Add todo */}
+        <TodoInput />
+
+        {/* Todo lists */}
+        <TodoList todos={todos} />
       </SafeAreaView>
     </LinearGradient>
   );

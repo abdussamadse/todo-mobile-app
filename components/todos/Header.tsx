@@ -40,9 +40,15 @@ export default function Header({ todos }: { todos: Todo[] }) {
       </View>
 
       {/* Progress Bar Background */}
-      <View className="mt-2 flex-row gap-4 items-center">
-        <View className="h-3 w-4/5 rounded-full bg-light-border dark:bg-dark-border overflow-hidden">
-          {/* Progress Bar Fill */}
+      <View className="mx-2 my-3 flex-row items-center">
+        {/* Progress Bar */}
+        <View
+          className="h-3 flex-1 rounded-full overflow-hidden"
+          style={{
+            backgroundColor:
+              theme === "dark" ? darkColors.border : lightColors.border,
+          }}
+        >
           <LinearGradient
             colors={colors.gradients.success}
             style={{
@@ -54,7 +60,13 @@ export default function Header({ todos }: { todos: Todo[] }) {
         </View>
 
         {/* Percentage Text */}
-        <Text className="text-[12px] w-1/1 font-medium text-light-textMuted dark:text-dark-textMuted">
+        <Text
+          className="text-[12px] font-medium ml-3"
+          style={{
+            color:
+              theme === "dark" ? darkColors.textMuted : lightColors.textMuted,
+          }}
+        >
           {Math.round(progressPercentage)}%
         </Text>
       </View>
