@@ -70,6 +70,8 @@ export default function TodoItem({
           isCompleted={isCompleted}
           colors={colors}
           onToggle={() => toggleMutation.mutate(item)}
+          toggleMutation={toggleMutation}
+          item={item}
         />
         <TodoTitle
           isEditing={isEditing}
@@ -90,6 +92,7 @@ export default function TodoItem({
         onCancel={() => setIsEditing(false)}
         onDelete={confirmDelete}
         colors={colors}
+        updateMutation={updateMutation}
       />
     </View>
   );

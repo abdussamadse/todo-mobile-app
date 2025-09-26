@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 
 interface TodoActionsProps {
   isCompleted: boolean;
@@ -9,6 +9,7 @@ interface TodoActionsProps {
   onCancel: () => void;
   onDelete: () => void;
   colors: any;
+  updateMutation: () => void;
 }
 
 export default function TodoActions({
@@ -19,6 +20,7 @@ export default function TodoActions({
   onCancel,
   onDelete,
   colors,
+  updateMutation,
 }: TodoActionsProps) {
   return (
     <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -33,7 +35,11 @@ export default function TodoActions({
                     fontWeight: "600",
                   }}
                 >
-                  Save
+                  {updateMutation.isPending ? (
+                    <ActivityIndicator size="small" color="white" />
+                  ) : (
+                    " Save"
+                  )}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={onCancel} style={{ marginRight: 12 }}>
